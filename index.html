@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Киномания</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="nav__title">Киномания</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="toolbar" role="toolbar" aria-label="Управление игрой">
+      <button type="button" class="btn" id="btn-start">Старт</button>
+      <button type="button" class="btn btn--ghost" id="btn-pause">Пауза</button>
+      <button type="button" class="btn btn--ghost" id="btn-resume">Продолжение</button>
+      <button type="button" class="btn btn--ghost" id="btn-restart">Заново</button>
+      <span class="best" id="best"></span>
+    </div>
+
+    <div class="screen" id="screen" data-state="ready">
+      <canvas id="game" width="960" height="540" aria-label="Игровое поле"></canvas>
+
+      <div class="result" id="result" hidden role="dialog" aria-labelledby="result-title">
+        <h2 id="result-title"></h2>
+        <p id="result-text"></p>
+        <ul id="result-stats"></ul>
+        <p class="result__best" id="result-best"></p>
+        <button class="btn" id="result-restart" type="button">Заново</button>
+      </div>
+    </div>
+
+    <div class="touch" aria-label="Экранные кнопки">
+      <div class="touch__dir">
+        <button type="button" data-touch="left" aria-label="Влево">◀</button>
+        <button type="button" data-touch="right" aria-label="Вправо">▶</button>
+      </div>
+      <button type="button" class="touch__jump" data-touch="jump" aria-label="Прыжок">Прыжок</button>
+    </div>
+
+    <ul class="keys" aria-label="Управление">
+      <li><kbd>←</kbd><kbd>→</kbd> или <kbd>A</kbd><kbd>D</kbd> <span>бег</span></li>
+      <li><kbd>Пробел</kbd> <kbd>W</kbd> <kbd>↑</kbd> <span>прыжок</span></li>
+    </ul>
+
+    <h3 class="section-title">Правила</h3>
+    <ul class="legend" aria-label="Предметы">
+      <li>Для победы собери нужное количество билетов в кино, попкорна и коробок с фильмами</li>
+      <li><b>Учти, что:</b></li>
+      <li>Домашка отнимает 5 секунд времени</li>
+      <li>Лаг на 0,5 скорости секунд замедляет героя</li>
+      <li></i>Спойлер фильма отнимает случайный предмет</li>
+    </ul>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+:root {
+  --bg: #14181c;
+  --panel: #1b222a;
+  --line: #2c3440;
+  --text: #99aabb;
+  --text-dim: #667788;
+  --white: #ffffff;
+  --green: #00e054;
+  --orange: #ff8000;
+  --blue: #40bcf4;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* верхняя панель */
+.nav {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(96vw, 960px);
+  height: 56px;
+  margin: 0 auto;
+}
+
+.dots { display: inline-flex; gap: 4px; }
+.dots i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.dots i:nth-child(1) { background: var(--orange); }
+.dots i:nth-child(2) { background: var(--green); }
+.dots i:nth-child(3) { background: var(--blue); }
+
+.nav__title {
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.nav__sub {
+  margin-left: auto;
+  font-size: .8rem;
+  color: var(--text-dim);
+}
+
+/* экран игры */
+.page {
+  width: min(96vw, 960px);
+  margin: 28px auto;
+}
+
+.screen {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .45);
+}
+
+.screen[data-state="playing"] { border-color: var(--green); }
+
+canvas {
+  outline: none;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  background: var(--bg);
+}
+
+/* кнопки управления */
+.keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: .9rem;
+}
+
+.keys li { display: flex; align-items: center; gap: 6px; }
+
+.keys span {
+  margin-left: 4px;
+  color: var(--white);
+}
+
+kbd {
+  min-width: 28px;
+  padding: 3px 8px;
+  font: inherit;
+  font-size: .8rem;
+  text-align: center;
+  color: var(--white);
+  background: var(--line);
+  border-radius: 3px;
+  box-shadow: 0 2px 0 #0e1215;
+} */
+
+.legend {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: .85rem;
+}
+
+.legend li { display: flex; align-items: center; gap: 10px; }
+
+/* экран результата */
+.result {
+  position: absolute;
+  inset: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(20, 24, 28, .9);
+  text-align: center;
+}
+
+.result[hidden] { display: none; }
+
+.result h2 { margin: 0; font-size: 2.2rem; color: var(--white); }
+.result h2.is-win { color: var(--green); }
+.result h2.is-lose { color: var(--orange); }
+.result p { margin: 0; }
+
+.result ul {
+  display: grid;
+  gap: 4px;
+  min-width: 280px;
+  margin: 4px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.result li {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.result li strong { color: var(--white); }
+
+.btn {
+  padding: 10px 32px;
+  font: 700 1rem -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #14181c;
+  background: var(--green);
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 #00a83f;
+  cursor: pointer;
+}
+
+.btn:hover { filter: brightness(1.08); }
+.btn:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+
+/* подсказка кнопок */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+.btn--ghost {
+  color: var(--white);
+  background: var(--line);
+  box-shadow: 0 2px 0 #0e1215;
+}
+
+.toolbar .btn { padding: 8px 20px; font-size: .95rem; }
+.btn:disabled { opacity: .35; cursor: not-allowed; filter: none; }
+
+.best {
+  margin-left: auto;
+  font-size: .85rem;
+  color: var(--text-dim);
+}
+
+.result__best { font-size: .9rem; color: var(--text-dim); }
+
+/* экранные кнопки для телефона */
+.touch {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.touch__dir { display: flex; gap: 12px; }
+
+.touch button {
+  width: 76px;
+  height: 76px;
+  padding: 0;
+  font-size: 1.6rem;
+  color: var(--white);
+  background: var(--line);
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 3px 0 #0e1215;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.touch .touch__jump {
+  width: 130px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #14181c;
+  background: var(--green);
+  box-shadow: 0 3px 0 #00a83f;
+}
+
+.touch button.is-down {
+  transform: translateY(2px);
+  filter: brightness(1.25);
+  box-shadow: none;
+}
+
+@media (pointer: coarse) {
+  .touch { display: flex; }
+  .keys { display: none; }
+}
